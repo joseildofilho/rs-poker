@@ -3,6 +3,7 @@ use std::collections::HashSet;
 use std::ops::Index;
 use std::ops::{RangeFrom, RangeFull, RangeTo};
 use std::slice::Iter;
+use std::iter::FromIterator;
 
 /// Struct to hold cards.
 ///
@@ -144,6 +145,12 @@ impl Index<RangeFrom<usize>> for Hand {
     #[must_use]
     fn index(&self, index: RangeFrom<usize>) -> &[Card] {
         &self.cards[index]
+    }
+}
+
+impl FromIterator<Card> for Hand {
+    fn from_iter<I: IntoIterator<Item=Card>>(iter: I) -> Self {
+        Hand::new_with_cards(iter.into_iter().collect::<Vec<Card>>())
     }
 }
 
