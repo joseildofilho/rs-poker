@@ -12,7 +12,7 @@ use std::iter::FromIterator;
 #[derive(Debug, Clone, Hash, PartialEq, Eq)]
 pub struct Hand {
     /// Where all the cards are placed un-ordered.
-    cards: Vec<Card>,
+    pub cards: Vec<Card>,
 }
 
 impl Hand {
